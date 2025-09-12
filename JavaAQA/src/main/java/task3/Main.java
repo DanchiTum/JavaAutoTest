@@ -1,4 +1,5 @@
 package task3;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.HashMap;
@@ -47,6 +48,8 @@ public class Main {
         }
         System.out.println(map.get(-1)); //In short, when we try to get the value of an element with a non-existent ID
                                          //we get ArrayIndexOutOfBoundsException, but in HashMap we get null
+        int[] arr2 = {1, 2, 3};
+        System.out.println(arr2[-1]);
     }
     public static void reverseArray(int[] arr) {
         int start = 0;
