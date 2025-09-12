@@ -49,7 +49,7 @@ public class Main {
         System.out.println(map.get(-1)); //In short, when we try to get the value of an element with a non-existent ID
                                          //we get ArrayIndexOutOfBoundsException, but in HashMap we get null
         int[] arr2 = {1, 2, 3};
-        System.out.println(arr2[-1]);
+        System.out.println(arr2[-1]);    //How you told me i make new array and make this mistake
     }
     public static void reverseArray(int[] arr) {
         int start = 0;
