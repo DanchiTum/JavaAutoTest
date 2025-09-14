@@ -1,5 +1,4 @@
 package task3;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.HashMap;
