@@ -1,0 +1,9 @@
+<Person>
+  <name>Sofi</name>
+  <age>22</age>
+  <address>
+    <street>1 Zamarstynivska st.</street>
+    <city>Seattle</city>
+    <state>BC</state>
+  </address>
+</Person>
