@@ -1,4 +1,4 @@
-package task1;
+package task2;
 //Instructions:
 //Declare two String variables.
 //Use the equals method to compare the two Strings.

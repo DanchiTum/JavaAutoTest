@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Suite1">
+    <test name="Task8 Tests">
+        <parameter name="paramA" value="Java"/>
+        <parameter name="paramB" value="Java"/>
+        <parameter name="expected" value="a і b однакові"/>
+        <classes>
+            <class name="task8.Task8Test"/>
+        </classes>
+    </test>
+</suite>
