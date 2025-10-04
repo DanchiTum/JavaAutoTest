@@ -15,12 +15,11 @@ import java.util.UUID;
 //- Enter a valid email address, a username, and a strong password
 //- Click on the "Sign Up" button
 //- Verify that the user is redirected to the home page
-//- Verify that the user account is created and logged in
 public class Task11Test {
     WebDriver driver;
     Homepage homePage;
     Signupmodel signUpModal;
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -40,7 +39,7 @@ public class Task11Test {
         String alertText = signUpModal.getAlertTextAndAccept();
         Assert.assertTrue(alertText.contains("Sign up successful"), "Unexpected alert message: " + alertText);
     }
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }
