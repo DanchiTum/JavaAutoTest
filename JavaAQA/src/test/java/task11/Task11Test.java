@@ -15,10 +15,17 @@ import java.util.UUID;
 //- Enter a valid email address, a username, and a strong password
 //- Click on the "Sign Up" button
 //- Verify that the user is redirected to the home page
+//- Verify that the user account is created and logged in
 public class Task11Test {
+//    In short, I noticed that I didn't complete the last point, which is to check if everything is ok,
+//    if we are logged in, so I sat down to do it again, thinking of doing it as a second scenario,
+//    and then asked a logical question. Why am I doing this in a second scenario?
+//    Then I got angry and deleted half of the code and started to assemble something more like Page Objects from it.
+//    With verification that we were logged in. This is the result
     WebDriver driver;
     Homepage homePage;
-    Signupmodel signUpModal;
+    SignupPage signupPage;
+    LoginPage loginPage;
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -26,19 +33,29 @@ public class Task11Test {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         homePage = new Homepage(driver);
-        signUpModal = new Signupmodel(driver);
+        signupPage = new SignupPage(driver);
+        loginPage = new LoginPage(driver);
     }
     @Test
-    public void testUserSignUp() {
-        homePage.open();
+    public void testUserSignUpAndLogin() {
+        homePage.open();                                             // Registration
         homePage.clickSignUp();
-        signUpModal.waitForVisible();
-        String Username = "Testuser" + UUID.randomUUID().toString().substring(0, 6);
-        signUpModal.fillForm(Username, "Password123");
-        signUpModal.submit();
-        String alertText = signUpModal.getAlertTextAndAccept();
-        Assert.assertTrue(alertText.contains("Sign up successful"), "Unexpected alert message: " + alertText);
+        signupPage.waitForVisible();
+        String username = "TestUser" + UUID.randomUUID().toString().substring(0, 6);
+        signupPage.enterUsername(username);
+        signupPage.enterPassword("Password123");
+        signupPage.clickSignUp();
+        String alertText = signupPage.getAlertTextAndAccept();
+        Assert.assertTrue(alertText.contains("Sign up successful"),"Error");
+        homePage.clickLogin();                                       // Login
+        loginPage.waitForVisible();
+        loginPage.enterUsername(username);
+        loginPage.enterPassword("Password123");
+        loginPage.clickLogin();
+        String loggedInUser = homePage.waitForLoggedInUser();
+        Assert.assertTrue(loggedInUser.contains(username),"User is not logged in.");
     }
+
     @AfterMethod
     public void tearDown() {
         driver.quit();
