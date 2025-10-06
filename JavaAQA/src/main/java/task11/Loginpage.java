@@ -1,15 +1,16 @@
 package task11;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-public class SignupPage {
+public class Loginpage {
     private WebDriver driver;
     private WebDriverWait wait;
-    private By usernameInput = By.id("sign-username");
-    private By passwordInput = By.id("sign-password");
-    private By signUpButton = By.xpath("//button[text()='Sign up']");
-    public SignupPage(WebDriver driver) {
+    private By usernameInput = By.id("loginusername");
+    private By passwordInput = By.id("loginpassword");
+    private By loginButton = By.xpath("//button[text()='Log in']");
+    public Loginpage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
@@ -22,13 +23,7 @@ public class SignupPage {
     public void enterPassword(String password) {
         driver.findElement(passwordInput).sendKeys(password);
     }
-    public void clickSignUp() {
-        driver.findElement(signUpButton).click();
-    }
-    public String getAlertTextAndAccept() {
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        String text = alert.getText();
-        alert.accept();
-        return text;
+    public void clickLogin() {
+        driver.findElement(loginButton).click();
     }
 }

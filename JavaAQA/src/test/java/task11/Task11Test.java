@@ -24,8 +24,8 @@ public class Task11Test {
 //    With verification that we were logged in. This is the result
     WebDriver driver;
     Homepage homePage;
-    SignupPage signupPage;
-    LoginPage loginPage;
+    Signuppage signupPage;
+    Loginpage loginPage;
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -33,8 +33,8 @@ public class Task11Test {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         homePage = new Homepage(driver);
-        signupPage = new SignupPage(driver);
-        loginPage = new LoginPage(driver);
+        signupPage = new Signuppage(driver);
+        loginPage = new Loginpage(driver);
     }
     @Test
     public void testUserSignUpAndLogin() {
